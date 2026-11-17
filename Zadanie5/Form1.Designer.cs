@@ -32,8 +32,8 @@
             comboDishes = new ComboBox();
             comboSolutions = new ComboBox();
             textCapacity = new TextBox();
-            textPrecent = new TextBox();
-            textNumberOfPieces = new TextBox();
+            textPercent = new TextBox();
+            textQuantity = new TextBox();
             labelScore = new Label();
             label1 = new Label();
             label2 = new Label();
@@ -43,10 +43,9 @@
             buttonClear = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            textPureSubstance = new TextBox();
+            textTotalVolume = new TextBox();
             label6 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,7 +53,7 @@
             // 
             buttonCalculate.Location = new Point(582, 218);
             buttonCalculate.Name = "buttonCalculate";
-            buttonCalculate.Size = new Size(206, 84);
+            buttonCalculate.Size = new Size(195, 73);
             buttonCalculate.TabIndex = 0;
             buttonCalculate.Text = "Oblicz";
             buttonCalculate.UseVisualStyleBackColor = true;
@@ -63,7 +62,7 @@
             // comboDishes
             // 
             comboDishes.FormattingEnabled = true;
-            comboDishes.Location = new Point(293, 31);
+            comboDishes.Location = new Point(315, 47);
             comboDishes.Name = "comboDishes";
             comboDishes.Size = new Size(219, 28);
             comboDishes.TabIndex = 1;
@@ -71,31 +70,31 @@
             // comboSolutions
             // 
             comboSolutions.FormattingEnabled = true;
-            comboSolutions.Location = new Point(293, 135);
+            comboSolutions.Location = new Point(315, 145);
             comboSolutions.Name = "comboSolutions";
             comboSolutions.Size = new Size(219, 28);
             comboSolutions.TabIndex = 2;
             // 
             // textCapacity
             // 
-            textCapacity.Location = new Point(293, 84);
+            textCapacity.Location = new Point(315, 93);
             textCapacity.Name = "textCapacity";
             textCapacity.Size = new Size(73, 27);
             textCapacity.TabIndex = 3;
             // 
-            // textPrecent
+            // textPercent
             // 
-            textPrecent.Location = new Point(293, 193);
-            textPrecent.Name = "textPrecent";
-            textPrecent.Size = new Size(73, 27);
-            textPrecent.TabIndex = 4;
+            textPercent.Location = new Point(315, 202);
+            textPercent.Name = "textPercent";
+            textPercent.Size = new Size(73, 27);
+            textPercent.TabIndex = 4;
             // 
-            // textNumberOfPieces
+            // textQuantity
             // 
-            textNumberOfPieces.Location = new Point(293, 255);
-            textNumberOfPieces.Name = "textNumberOfPieces";
-            textNumberOfPieces.Size = new Size(151, 27);
-            textNumberOfPieces.TabIndex = 5;
+            textQuantity.Location = new Point(315, 264);
+            textQuantity.Name = "textQuantity";
+            textQuantity.Size = new Size(151, 27);
+            textQuantity.TabIndex = 5;
             // 
             // labelScore
             // 
@@ -109,7 +108,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(48, 34);
+            label1.Location = new Point(70, 50);
             label1.Name = "label1";
             label1.Size = new Size(124, 20);
             label1.TabIndex = 7;
@@ -118,7 +117,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(48, 87);
+            label2.Location = new Point(70, 96);
             label2.Name = "label2";
             label2.Size = new Size(114, 20);
             label2.TabIndex = 8;
@@ -127,7 +126,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(48, 138);
+            label3.Location = new Point(70, 148);
             label3.Name = "label3";
             label3.Size = new Size(117, 20);
             label3.TabIndex = 9;
@@ -136,7 +135,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(48, 196);
+            label4.Location = new Point(70, 205);
             label4.Name = "label4";
             label4.Size = new Size(106, 20);
             label4.TabIndex = 10;
@@ -145,7 +144,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(48, 262);
+            label5.Location = new Point(70, 267);
             label5.Name = "label5";
             label5.Size = new Size(138, 20);
             label5.TabIndex = 11;
@@ -159,30 +158,21 @@
             buttonClear.TabIndex = 12;
             buttonClear.Text = "Czysc";
             buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboDishes);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textNumberOfPieces);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textCapacity);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textPrecent);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(comboSolutions);
-            groupBox1.Location = new Point(22, 5);
+            groupBox1.Location = new Point(22, 20);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(766, 297);
+            groupBox1.Size = new Size(766, 282);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dane wejściowe";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(textPureSubstance);
+            groupBox2.Controls.Add(textTotalVolume);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(labelScore);
             groupBox2.Location = new Point(416, 313);
@@ -191,6 +181,20 @@
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             groupBox2.Text = "Wyniki";
+            // 
+            // textPureSubstance
+            // 
+            textPureSubstance.Location = new Point(276, 78);
+            textPureSubstance.Name = "textPureSubstance";
+            textPureSubstance.Size = new Size(70, 27);
+            textPureSubstance.TabIndex = 9;
+            // 
+            // textTotalVolume
+            // 
+            textTotalVolume.Location = new Point(276, 41);
+            textTotalVolume.Name = "textTotalVolume";
+            textTotalVolume.Size = new Size(70, 27);
+            textTotalVolume.TabIndex = 8;
             // 
             // label6
             // 
@@ -201,22 +205,6 @@
             label6.TabIndex = 7;
             label6.Text = "Objetosc czystej substancji (ml):";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(261, 41);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(85, 27);
-            textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(261, 78);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(85, 27);
-            textBox2.TabIndex = 9;
-            // 
             // Form1
             // 
             AcceptButton = buttonCalculate;
@@ -224,17 +212,26 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(buttonClear);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(textQuantity);
+            Controls.Add(textPercent);
+            Controls.Add(textCapacity);
+            Controls.Add(comboSolutions);
+            Controls.Add(comboDishes);
             Controls.Add(buttonCalculate);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Name = "Form1";
             Text = "Kalkulator Substancji Czynnej";
             Load += Form1_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -243,8 +240,8 @@
         private ComboBox comboDishes;
         private ComboBox comboSolutions;
         private TextBox textCapacity;
-        private TextBox textPrecent;
-        private TextBox textNumberOfPieces;
+        private TextBox textPercent;
+        private TextBox textQuantity;
         private Label labelScore;
         private Label label1;
         private Label label2;
@@ -254,8 +251,8 @@
         private Button buttonClear;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox textPureSubstance;
+        private TextBox textTotalVolume;
         private Label label6;
     }
 }

@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
 namespace Zadanie5
 {
     public partial class Form1 : Form
@@ -7,12 +11,11 @@ namespace Zadanie5
         public Form1()
         {
             InitializeComponent();
+            comboDishes.DataSource = new List<string>(calculator.TypicalVessels.Keys);
+            comboSolutions.DataSource = new List<string>(calculator.TypicalSolutions.Keys);
+            textQuantity.Text = "1";
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -47,6 +50,22 @@ namespace Zadanie5
             textQuantity.Text = "1";
             textTotalVolume.Clear();
             textPureSubstance.Clear();
+        }
+
+        private void comboDishes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (calculator.TypicalVessels.TryGetValue(comboDishes.Text, out double capacity))
+            {
+                textCapacity.Text = capacity > 0 ? capacity.ToString() : string.Empty;
+            }
+        }
+
+        private void comboSolutions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (calculator.TypicalSolutions.TryGetValue(comboSolutions.Text, out double percentage))
+            {
+                textPercent.Text = percentage > 0 ? percentage.ToString() : string.Empty;
+            }
         }
     }
 }

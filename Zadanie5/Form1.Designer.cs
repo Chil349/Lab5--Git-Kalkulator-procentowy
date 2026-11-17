@@ -66,6 +66,7 @@
             comboDishes.Name = "comboDishes";
             comboDishes.Size = new Size(219, 28);
             comboDishes.TabIndex = 1;
+            comboDishes.SelectedIndexChanged += comboDishes_SelectedIndexChanged;
             // 
             // comboSolutions
             // 
@@ -74,6 +75,7 @@
             comboSolutions.Name = "comboSolutions";
             comboSolutions.Size = new Size(219, 28);
             comboSolutions.TabIndex = 2;
+            comboSolutions.SelectedIndexChanged += comboSolutions_SelectedIndexChanged;
             // 
             // textCapacity
             // 
@@ -227,7 +229,6 @@
             Controls.Add(groupBox2);
             Name = "Form1";
             Text = "Kalkulator Substancji Czynnej";
-            Load += Form1_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);

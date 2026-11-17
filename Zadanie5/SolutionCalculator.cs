@@ -22,5 +22,15 @@ namespace Zadanie5
             { "Spirytus (95%)", 95 },
             { "Własne stężenie...", -1 }
         };
+        public (double totalVolume, double pureSubstanceVolume) Calculate(double capacity, double percentage, int vesselCount)
+        {
+            if (capacity < 0 || vesselCount < 0 || percentage is < 0 or > 100)
+            {
+                throw new ArgumentException("Wprowadzono wartości spoza dopuszczalnego zakresu.");
+            }
+
+            double total = capacity * vesselCount;
+            return (total, total * (percentage / 100.0));
+        }
     }
 }
